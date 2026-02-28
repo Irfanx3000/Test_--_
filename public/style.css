@@ -234,12 +234,32 @@ button{
   background:#e1e1e1;
 }
 
-/* Google button wrapper (Google rendered button fix) */
+/* ===== GOOGLE BUTTON CENTER FIX ===== */
+
+.google-center{
+    width:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin-top:6px;
+    margin-bottom:8px;
+}
+
+/* force iframe center */
+.google-center > div{
+    margin:auto !important;
+}
+
+/* fix One Tap account button alignment */
+.g_id_signin iframe{
+    margin:0 auto !important;
+}
+
+/* make it visually same width as other buttons */
 .g_id_signin{
-  width:100% !important;
-  display:flex;
-  justify-content:center;
-  margin-bottom:12px;
+    display:flex !important;
+    justify-content:center;
+    width:100%;
 }
 
 /* ============================= */
