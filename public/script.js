@@ -1,125 +1,133 @@
-const BASE_URL = "https://YOUR-RENDER-SERVICE.onrender.com";
+/* ================= BASE URL ================= */
+const BASE_URL = "https://YOUR-RENDER-APP.onrender.com";
 
 
-/* ---------------- LOGIN ---------------- */
+/* ================= REGISTER MODAL ================= */
 
-async function loginUser(){
+window.openRegister = function () {
+  document.getElementById("registerModal").style.display = "flex";
+};
 
-  const email = document.getElementById("email").value.trim();
-  const password = document.getElementById("password").value.trim();
-
-  if(!email || !password){
-    alert("Enter email and password");
-    return;
-  }
-
-  try{
-    const res = await fetch(`${BASE_URL}/api/auth/login`,{
-      method:"POST",
-      headers:{ "Content-Type":"application/json" },
-      body: JSON.stringify({ email, password })
-    });
-
-    const data = await res.json();
-
-    if(res.ok){
-      localStorage.setItem("token", data.token);
-      alert("Login Successful");
-      window.location.reload();
-    }else{
-      alert(data.message);
-    }
-
-  }catch(err){
-    alert("Server error");
-    console.log(err);
-  }
-}
+window.closeRegister = function () {
+  document.getElementById("registerModal").style.display = "none";
+};
 
 
-/* ---------------- REGISTER ---------------- */
+/* ================= REGISTER USER ================= */
 
-function openRegister(){
-  document.getElementById("registerModal").style.display="flex";
-}
-
-function closeRegister(){
-  document.getElementById("registerModal").style.display="none";
-}
-
-async function registerUser(){
+window.registerUser = async function () {
 
   const name = document.getElementById("regName").value.trim();
   const email = document.getElementById("regEmail").value.trim();
   const password = document.getElementById("regPassword").value.trim();
 
-  if(!name || !email || !password){
-    alert("Fill all fields");
+  if (!name || !email || !password) {
+    alert("Please fill all fields");
     return;
   }
 
-  try{
-    const res = await fetch(`${BASE_URL}/api/auth/register`,{
-      method:"POST",
-      headers:{ "Content-Type":"application/json" },
-      body: JSON.stringify({ name, email, password })
+  try {
+    const res = await fetch(`${BASE_URL}/api/auth/register`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ name, email, password }),
     });
 
     const data = await res.json();
 
-    if(res.ok){
-      alert("Registration successful. Now login.");
+    if (res.ok) {
+      alert("Registration successful! Now login.");
       closeRegister();
-    }else{
+    } else {
       alert(data.message);
     }
-
-  }catch(err){
+  } catch (err) {
     console.log(err);
-    alert("Server error");
+    alert("Server error while registering");
   }
-}
+};
 
 
-/* ---------------- GOOGLE LOGIN ---------------- */
+/* ================= LOGIN USER ================= */
 
-function handleCredentialResponse(response){
+window.loginUser = async function () {
 
-  fetch(`${BASE_URL}/api/auth/google`,{
-    method:"POST",
-    headers:{ "Content-Type":"application/json" },
-    body: JSON.stringify({ idToken: response.credential })
-  })
-  .then(res => res.json())
-  .then(data => {
+  const email = document.getElementById("email").value.trim();
+  const password = document.getElementById("password").value.trim();
+
+  if (!email || !password) {
+    alert("Enter email and password");
+    return;
+  }
+
+  try {
+    const res = await fetch(`${BASE_URL}/api/auth/login`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email, password }),
+    });
+
+    const data = await res.json();
+
+    if (res.ok) {
       localStorage.setItem("token", data.token);
-      alert("Google Login Successful");
-      window.location.reload();
+      alert("Login successful!");
+      location.reload();
+    } else {
+      alert(data.message);
+    }
+  } catch (err) {
+    console.log(err);
+    alert("Login server error");
+  }
+};
+
+
+/* ================= GOOGLE LOGIN ================= */
+
+window.handleCredentialResponse = function (response) {
+
+  fetch(`${BASE_URL}/api/auth/google`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ idToken: response.credential }),
   })
-  .catch(err => console.log(err));
-}
+    .then(res => res.json())
+    .then(data => {
+      localStorage.setItem("token", data.token);
+      alert("Google login successful!");
+      location.reload();
+    })
+    .catch(err => console.log(err));
+};
 
 
-/* ---------------- PASSWORD TOGGLE ---------------- */
+/* ================= PASSWORD TOGGLE ================= */
 
-function togglePassword(){
+window.togglePassword = function () {
   const pass = document.getElementById("password");
   const open = document.getElementById("eye-open");
   const closed = document.getElementById("eye-closed");
 
-  if(pass.type === "password"){
+  if (pass.type === "password") {
     pass.type = "text";
-    open.style.display="none";
-    closed.style.display="block";
-  }else{
+    open.style.display = "none";
+    closed.style.display = "block";
+  } else {
     pass.type = "password";
-    open.style.display="block";
-    closed.style.display="none";
+    open.style.display = "block";
+    closed.style.display = "none";
   }
-}
+};
 
 
-/* ---------------- SLIDER ---------------- */
+/* ================= SLIDER ================= */
 
 const slides = [
   "https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?q=80&w=1200&auto=format&fit=crop",
@@ -129,14 +137,16 @@ const slides = [
 ];
 
 let index = 0;
-const img = document.getElementById("slideImage");
-const indicators = document.querySelectorAll(".indicator");
 
-setInterval(()=>{
-  index = (index+1)%slides.length;
-  img.src = slides[index];
+window.onload = () => {
+  const img = document.getElementById("slideImage");
+  const indicators = document.querySelectorAll(".indicator");
 
-  indicators.forEach(i=>i.classList.remove("active"));
-  indicators[index].classList.add("active");
+  setInterval(() => {
+    index = (index + 1) % slides.length;
+    img.src = slides[index];
 
-},3000);
+    indicators.forEach(i => i.classList.remove("active"));
+    indicators[index].classList.add("active");
+  }, 3000);
+};
