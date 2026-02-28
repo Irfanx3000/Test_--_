@@ -96,13 +96,33 @@
 </div>
 
       <p class="register">
-        New User? <span>Register Now!</span>
-      </p>
-
+  New User? <span onclick="openRegister()">Register Now!</span>
+</p>
     </div>
   </div>
 </div>
 
 <script src="/script.js"></script>
+<!-- REGISTER MODAL -->
+<div class="overlay" id="registerModal" style="display:none;">
+  <div class="modal" style="width:420px;height:auto;padding:30px;">
+
+    <div class="close-btn" onclick="closeRegister()">✕</div>
+
+    <h2>Create Account</h2>
+
+    <input id="regName" type="text" placeholder="Full Name">
+    <input id="regEmail" type="email" placeholder="Email">
+    <input id="regPassword" type="password" placeholder="Password">
+
+    <button class="login-btn" onclick="registerUser()">Register</button>
+
+    <p class="register">
+      Already have an account?
+      <span onclick="closeRegister()">Login</span>
+    </p>
+
+  </div>
+</div>
 </body>
 </html>
