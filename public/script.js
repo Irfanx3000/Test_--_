@@ -1,6 +1,6 @@
 /* ================= BASE URL ================= */
 // IMPORTANT: Replace this with your actual Render backend URL!
-const BASE_URL = "https://test-e9cb.onrender.com/"; 
+const BASE_URL = "https://test-e9cb.onrender.com"; 
 
 /* ================= MODAL CONTROLS ================= */
 
