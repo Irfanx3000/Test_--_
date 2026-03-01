@@ -1,6 +1,6 @@
 /* ================= CONFIGURATION ================= */
 // Ensure this is your Backend URL (where your API runs)
-const BASE_URL = "https://test-e9cb.onrender.com"; 
+const BASE_URL = "https://login-demo-o1hu.onrender.com"; 
 
 console.log("Script.js loaded successfully!");
 
