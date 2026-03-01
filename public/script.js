@@ -1,22 +1,22 @@
 /* ================= BASE URL ================= */
-const BASE_URL = "https://YOUR-RENDER-APP.onrender.com";
+// IMPORTANT: Replace this with your actual Render backend URL!
+const BASE_URL = "https://test-e9cb.onrender.com/"; 
 
-
-/* ================= REGISTER MODAL ================= */
+/* ================= MODAL CONTROLS ================= */
 
 window.openRegister = function () {
-  document.getElementById("registerModal").style.display = "flex";
+  const modal = document.getElementById("registerModal");
+  if (modal) modal.style.display = "flex";
 };
 
 window.closeRegister = function () {
-  document.getElementById("registerModal").style.display = "none";
+  const modal = document.getElementById("registerModal");
+  if (modal) modal.style.display = "none";
 };
-
 
 /* ================= REGISTER USER ================= */
 
 window.registerUser = async function () {
-
   const name = document.getElementById("regName").value.trim();
   const email = document.getElementById("regEmail").value.trim();
   const password = document.getElementById("regPassword").value.trim();
@@ -29,9 +29,7 @@ window.registerUser = async function () {
   try {
     const res = await fetch(`${BASE_URL}/api/auth/register`, {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ name, email, password }),
     });
 
@@ -39,21 +37,19 @@ window.registerUser = async function () {
 
     if (res.ok) {
       alert("Registration successful! Now login.");
-      closeRegister();
+      window.closeRegister();
     } else {
-      alert(data.message);
+      alert(data.message || "Registration failed");
     }
   } catch (err) {
-    console.log(err);
-    alert("Server error while registering");
+    console.error("Reg Error:", err);
+    alert("Server error while registering. Check console.");
   }
 };
-
 
 /* ================= LOGIN USER ================= */
 
 window.loginUser = async function () {
-
   const email = document.getElementById("email").value.trim();
   const password = document.getElementById("password").value.trim();
 
@@ -65,9 +61,7 @@ window.loginUser = async function () {
   try {
     const res = await fetch(`${BASE_URL}/api/auth/login`, {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, password }),
     });
 
@@ -78,37 +72,15 @@ window.loginUser = async function () {
       alert("Login successful!");
       location.reload();
     } else {
-      alert(data.message);
+      alert(data.message || "Login failed");
     }
   } catch (err) {
-    console.log(err);
+    console.error("Login Error:", err);
     alert("Login server error");
   }
 };
 
-
-/* ================= GOOGLE LOGIN ================= */
-
-window.handleCredentialResponse = function (response) {
-
-  fetch(`${BASE_URL}/api/auth/google`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ idToken: response.credential }),
-  })
-    .then(res => res.json())
-    .then(data => {
-      localStorage.setItem("token", data.token);
-      alert("Google login successful!");
-      location.reload();
-    })
-    .catch(err => console.log(err));
-};
-
-
-/* ================= PASSWORD TOGGLE ================= */
+/* ================= PASSWORD TOGGLES ================= */
 
 window.togglePassword = function () {
   const pass = document.getElementById("password");
@@ -125,23 +97,25 @@ window.togglePassword = function () {
     closed.style.display = "none";
   }
 };
-function toggleRegPassword() {
+
+// Attached to window to ensure HTML can see it
+window.toggleRegPassword = function () {
   const passwordInput = document.getElementById('regPassword');
   const eyeOpen = document.getElementById('reg-eye-open');
   const eyeClosed = document.getElementById('reg-eye-closed');
 
-  if (passwordInput.type === 'password') {
+  if (passwordInput && passwordInput.type === 'password') {
     passwordInput.type = 'text';
-    eyeOpen.style.display = 'none';
-    eyeClosed.style.display = 'block';
-  } else {
+    if(eyeOpen) eyeOpen.style.display = 'none';
+    if(eyeClosed) eyeClosed.style.display = 'block';
+  } else if (passwordInput) {
     passwordInput.type = 'password';
-    eyeOpen.style.display = 'block';
-    eyeClosed.style.display = 'none';
+    if(eyeOpen) eyeOpen.style.display = 'block';
+    if(eyeClosed) eyeClosed.style.display = 'none';
   }
-}
+};
 
-/* ================= SLIDER ================= */
+/* ================= SLIDER & INITIALIZATION ================= */
 
 const slides = [
   "https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?q=80&w=1200&auto=format&fit=crop",
@@ -150,17 +124,20 @@ const slides = [
   "https://images.unsplash.com/photo-1492724441997-5dc865305da7?q=80&w=1200&auto=format&fit=crop"
 ];
 
-let index = 0;
+let currentIndex = 0;
 
-window.onload = () => {
+// Use addEventListener instead of window.onload to be safer
+window.addEventListener('load', () => {
   const img = document.getElementById("slideImage");
   const indicators = document.querySelectorAll(".indicator");
 
-  setInterval(() => {
-    index = (index + 1) % slides.length;
-    img.src = slides[index];
+  if (img && indicators.length > 0) {
+    setInterval(() => {
+      currentIndex = (currentIndex + 1) % slides.length;
+      img.src = slides[currentIndex];
 
-    indicators.forEach(i => i.classList.remove("active"));
-    indicators[index].classList.add("active");
-  }, 3000);
-};
+      indicators.forEach(i => i.classList.remove("active"));
+      indicators[currentIndex].classList.add("active");
+    }, 3000);
+  }
+});
