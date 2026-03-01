@@ -125,7 +125,21 @@ window.togglePassword = function () {
     closed.style.display = "none";
   }
 };
+function toggleRegPassword() {
+  const passwordInput = document.getElementById('regPassword');
+  const eyeOpen = document.getElementById('reg-eye-open');
+  const eyeClosed = document.getElementById('reg-eye-closed');
 
+  if (passwordInput.type === 'password') {
+    passwordInput.type = 'text';
+    eyeOpen.style.display = 'none';
+    eyeClosed.style.display = 'block';
+  } else {
+    passwordInput.type = 'password';
+    eyeOpen.style.display = 'block';
+    eyeClosed.style.display = 'none';
+  }
+}
 
 /* ================= SLIDER ================= */
 

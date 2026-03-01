@@ -15,7 +15,7 @@
 
 <body>
 
-<div class="overlay">
+<div class="overlay" style="background:#f3f3f3;">
 
   <div class="modal">
 
@@ -103,20 +103,45 @@
 </div>
 <!-- REGISTER MODAL -->
 <div class="overlay" id="registerModal" style="display:none;">
-  <div class="modal" style="width:420px;height:auto;padding:30px;">
+  <div class="register-modal">
 
-    <div class="close-btn" onclick="closeRegister()">✕</div>
+    <div class="register-header">
+      <div class="close-btn" onclick="closeRegister()">✕</div>
+      <h2>Create Account</h2>
+      <p>Join us and start your journey</p>
+    </div>
 
-    <h2>Create Account</h2>
+    <div class="form-group">
+      <label>Full Name</label>
+      <input id="regName" type="text" placeholder="Enter your full name">
+    </div>
 
-    <input id="regName" type="text" placeholder="Full Name">
-    <input id="regEmail" type="email" placeholder="Email">
-    <input id="regPassword" type="password" placeholder="Password">
+    <div class="form-group">
+      <label>Email Address</label>
+      <input id="regEmail" type="email" placeholder="Enter your email">
+    </div>
 
-    <button class="login-btn" onclick="registerUser()">Register</button>
+    <div class="form-group">
+  <label>Password</label>
+  <div class="password-box">
+    <input id="regPassword" type="password" placeholder="Create password">
+    <span class="toggle-password" onclick="toggleRegPassword()">
+      <svg id="reg-eye-open" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z"/>
+        <circle cx="12" cy="12" r="3"/>
+      </svg>
+      <svg id="reg-eye-closed" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;">
+        <path d="M1 1l22 22"/>
+        <path d="M17.94 17.94A10.94 10.94 0 0 1 12 19c-7 0-11-7-11-7"/>
+      </svg>
+    </span>
+  </div>
+</div>
 
-    <p class="register">
-      Already have an account?
+    <button class="primary-btn" onclick="registerUser()">Create Account</button>
+
+    <p class="register-footer">
+      Already have an account? 
       <span onclick="closeRegister()">Login</span>
     </p>
 

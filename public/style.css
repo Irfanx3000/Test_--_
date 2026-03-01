@@ -18,11 +18,16 @@ body{
 /* Overlay Centering */
 /* ============================= */
 .overlay{
-  min-height:100vh;
+  position:fixed;       /* IMPORTANT */
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.45);  /* dark background */
   display:flex;
-  align-items:center;
   justify-content:center;
-  padding:20px;
+  align-items:center;
+  z-index:1000;         /* appear above everything */
 }
 
 /* ============================= */
@@ -280,4 +285,108 @@ button{
 
 .register span:hover{
   text-decoration:underline;
+}
+/* ================= REGISTER MODAL ================= */
+/* ================= REGISTER MODAL FIX ================= */
+
+.register-modal {
+  width: 100%;
+  max-width: 400px; /* Smaller, focused width */
+  padding: 40px;
+  border-radius: 18px;
+  background: white;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.25);
+  position: relative;
+  display: flex;
+  flex-direction: column; /* This keeps everything stacked vertically */
+  animation: fadeIn 0.3s ease;
+}
+
+/* Header Alignment */
+.register-header {
+  text-align: left;
+  margin-bottom: 25px;
+}
+
+.register-header h2 {
+  text-align: left; /* Overriding the global center align */
+  margin: 0;
+  font-size: 26px;
+  font-weight: 700;
+  color: #222;
+}
+
+.register-header p {
+  margin: 5px 0 0 0;
+  font-size: 14px;
+  color: #777;
+}
+
+/* Ensure form groups take full width */
+.form-group {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #444;
+}
+
+/* Resetting input margins for the register form */
+.form-group input {
+  margin-bottom: 0; 
+}
+
+/* Button Styling */
+.primary-btn {
+  width: 100%;
+  height: 48px;
+  background: #d62839;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: 0.2s;
+}
+
+.primary-btn:hover {
+  background: #b91d2d;
+  box-shadow: 0 5px 15px rgba(214,40,57,0.3);
+}
+/* Ensure the password container fills the form group */
+.register-modal .password-box {
+  width: 100%;
+  position: relative;
+}
+
+/* Add padding so text doesn't go under the eye */
+.register-modal .password-box input {
+  padding-right: 45px;
+  width: 100%;
+}
+
+/* Position the eye icon */
+.register-modal .toggle-password {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #777;
+  display: flex;
+  align-items: center;
+  z-index: 5;
+}
+
+.register-modal .toggle-password svg {
+  width: 20px;
+  height: 20px;
 }
