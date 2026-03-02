@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home | TechStore</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Home Specific Styles */
+        nav {
+            background: #fff;
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo { font-size: 24px; font-weight: 700; color: #d72638; }
+
+        .nav-links a {
+            margin-left: 25px;
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover { color: #d72638; }
+
+        /* Hero Banner */
+        .hero {
+            width: 100%;
+            height: 70vh;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                        url('https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=1200&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+        }
+
+        .hero h1 { font-size: 3.5rem; margin-bottom: 15px; }
+        .hero p { font-size: 1.2rem; margin-bottom: 25px; max-width: 600px; }
+
+        .primary-btn {
+            width: auto;
+            padding: 12px 35px;
+            background: #d72638;
+            color: white;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* Product Section */
+        .products { padding: 60px 8%; }
+        .section-title { text-align: center; margin-bottom: 40px; font-size: 2rem; }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: 0.3s;
+            text-align: center;
+            padding-bottom: 20px;
+        }
+
+        .product-card:hover { transform: translateY(-10px); }
+
+        .product-card img { width: 100%; height: 200px; object-fit: cover; }
+        .product-card h3 { margin: 15px 0 5px; color: #222; }
+        .product-card .price { color: #d72638; font-weight: 700; font-size: 1.1rem; }
+
+        .logout-btn { color: #d72638 !important; cursor: pointer; }
+
+        #adminLink { display: none; } /* Hidden by default */
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">TechStore</div>
+        <div class="nav-links">
+            <a href="home.html">Home</a>
+            <a href="#" id="adminLink">Admin Panel</a>
+            <a href="#" class="logout-btn" onclick="logout()">Logout</a>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <h1>Future Tech, Today</h1>
+        <p>Your one-stop destination for the latest gadgets and electronics with secure checkout.</p>
+        <button class="primary-btn">Explore Collection</button>
+    </header>
+
+    <section class="products">
+        <h2 class="section-title">Featured Products</h2>
+        <div class="product-grid">
+            
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=400" alt="Watch">
+                <h3>Smart Watch Elite</h3>
+                <p class="price">$249.00</p>
+                <button class="login-btn" style="width: 80%; margin-top: 10px;">Buy Now</button>
+            </div>
+
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=400" alt="Headphones">
+                <h3>Audio-Max Wireless</h3>
+                <p class="price">$129.00</p>
+                <button class="login-btn" style="width: 80%; margin-top: 10px;">Buy Now</button>
+            </div>
+
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?q=80&w=400" alt="Camera">
+                <h3>Insta-Focus 4K</h3>
+                <p class="price">$599.00</p>
+                <button class="login-btn" style="width: 80%; margin-top: 10px;">Buy Now</button>
+            </div>
+
+        </div>
+    </section>
+
+    <script>
+        // Check if user is logged in
+        window.onload = () => {
+            const token = localStorage.getItem("token");
+            if (!token) {
+                alert("Please login first!");
+                window.location.href = "index.html"; // Redirect to login
+            }
+
+            // Logic to check if user is admin (optional based on your JWT data)
+            // If you decode the JWT and find isAdmin: true, show the admin link
+            // For now, let's keep it manual or based on your preference
+            const userIsAdmin = true; // Replace with real check
+            if(userIsAdmin) {
+                document.getElementById('adminLink').style.display = 'inline-block';
+            }
+        };
+
+        function logout() {
+            localStorage.removeItem("token");
+            window.location.href = "index.html";
+        }
+    </script>
+</body>
+</html>
