@@ -137,3 +137,19 @@ export const emailLogin = async (req, res) => {
     res.status(500).json({ message: "Login failed" });
   }
 };
+
+/* ======================================================
+   GET ALL USERS (FOR ADMIN PANEL)
+====================================================== */
+export const getUsers = async (req, res) => {
+  try {
+    // Find all users and return only name, email, and createdAt fields
+    // We explicitly exclude the password field for security
+    const users = await User.find({}, "name email createdAt").sort({ createdAt: -1 }); 
+    
+    res.status(200).json(users);
+  } catch (error) {
+    console.error("Error fetching users:", error);
+    res.status(500).json({ message: "Server error while fetching users" });
+  }
+};
