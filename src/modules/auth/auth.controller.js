@@ -141,15 +141,18 @@ export const emailLogin = async (req, res) => {
 /* ======================================================
    GET ALL USERS (FOR ADMIN PANEL)
 ====================================================== */
-export const getUsers = async (req, res) => {
+// Add/Update this at the bottom of auth.controller.js
+export const getAdminStats = async (req, res) => {
   try {
-    // Find all users and return only name, email, and createdAt fields
-    // We explicitly exclude the password field for security
-    const users = await User.find({}, "name email createdAt").sort({ createdAt: -1 }); 
+    const users = await User.find({}, 'name email createdAt').sort({ createdAt: -1 });
+    const count = await User.countDocuments();
     
-    res.status(200).json(users);
+    res.status(200).json({
+      totalAccounts: count,
+      users: users
+    });
   } catch (error) {
-    console.error("Error fetching users:", error);
-    res.status(500).json({ message: "Server error while fetching users" });
+    console.error("Admin Stats Error:", error);
+    res.status(500).json({ message: "Error fetching admin data" });
   }
 };
