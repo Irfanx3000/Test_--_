@@ -1,9 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
 
 /* ============================= */
-
 /* Base */
-
 /* ============================= */
 
 * {
@@ -12,85 +10,56 @@
 
 body {
   margin: 0;
-
   background: #f1f3f6;
-
   font-family: "Poppins", sans-serif;
 }
 
 /* ============================= */
-
 /* Overlay Centering */
-
 /* ============================= */
 
 .overlay {
   position: fixed; /* IMPORTANT */
-
   top: 0;
-
   left: 0;
-
   width: 100%;
-
   height: 100%;
-
   background: rgba(0, 0, 0, 0.45); /* dark background */
-
   display: flex;
-
   justify-content: center;
-
   align-items: center;
-
   z-index: 1000; /* appear above everything */
 }
 
 /* ============================= */
-
 /* Main Modal */
-
 /* ============================= */
 
 .modal {
   width: 900px;
-
   height: 520px;
-
   background: #fff;
-
   border-radius: 18px;
-
   overflow: hidden;
-
   display: flex;
-
   box-shadow: 0 25px 60px rgba(0, 0, 0, 0.18);
 }
 
 /* ============================= */
-
 /* LEFT SLIDER */
-
 /* ============================= */
 
 .slider {
   width: 50%;
-
   height: 100%;
-
   position: relative;
-
   background: #000;
 }
 
 .slider img {
   width: 100%;
-
   height: 100%;
-
   object-fit: cover;
-
   transition: opacity 0.5s ease;
 }
 
@@ -98,27 +67,18 @@ body {
 
 .slide-indicators {
   position: absolute;
-
   bottom: 22px;
-
   left: 50%;
-
   transform: translateX(-50%);
-
   display: flex;
-
   gap: 7px;
 }
 
 .indicator {
   width: 28px;
-
   height: 5px;
-
   border-radius: 3px;
-
   background: rgba(255, 255, 255, 0.35);
-
   transition: 0.3s;
 }
 
@@ -127,22 +87,15 @@ body {
 }
 
 /* ============================= */
-
 /* LOGIN SIDE */
-
 /* ============================= */
 
 .login-area {
   width: 50%;
-
   padding: 34px 40px;
-
   position: relative;
-
   display: flex;
-
   flex-direction: column;
-
   justify-content: center;
 }
 
@@ -150,17 +103,11 @@ body {
 
 .close-btn {
   position: absolute;
-
   top: 16px;
-
   right: 18px;
-
   font-size: 20px;
-
   color: #444;
-
   cursor: pointer;
-
   transition: 0.2s;
 }
 
@@ -172,23 +119,16 @@ body {
 
 .avatar {
   width: 72px;
-
   height: 72px;
-
   border-radius: 50%;
-
   overflow: hidden;
-
   margin: 0 auto 10px;
-
   border: 3px solid #e9e9e9;
 }
 
 .avatar img {
   width: 100%;
-
   height: 100%;
-
   object-fit: cover;
 }
 
@@ -196,49 +136,32 @@ body {
 
 h2 {
   text-align: center;
-
   margin: 6px 0 18px;
-
   font-size: 26px;
-
   font-weight: 600;
-
   color: #222;
 }
 
 /* ============================= */
-
 /* INPUT FIELDS */
-
 /* ============================= */
 
 input {
   width: 100%;
-
   height: 42px;
-
   padding: 0 14px;
-
   border-radius: 9px;
-
   border: 1px solid #ddd;
-
   background: #f7f8fa;
-
   font-size: 14px;
-
   margin-bottom: 12px;
-
   outline: none;
-
   transition: 0.25s;
 }
 
 input:focus {
   border-color: #c82333;
-
   background: white;
-
   box-shadow: 0 0 0 2px rgba(200, 35, 51, 0.12);
 }
 
@@ -256,25 +179,17 @@ input:focus {
 
 .toggle-password {
   position: absolute;
-
   right: 14px;
-
   top: 50%;
-
   transform: translateY(-50%);
-
   cursor: pointer;
-
   color: #777;
-
   display: flex;
-
   align-items: center;
 }
 
 .toggle-password svg {
   width: 21px;
-
   height: 21px;
 }
 
@@ -283,24 +198,16 @@ input:focus {
 }
 
 /* ============================= */
-
 /* Forgot Password */
-
 /* ============================= */
 
 .forgot {
   display: block;
-
   text-align: center;
-
   margin-top: -6px;
-
   margin-bottom: 14px;
-
   font-size: 13px;
-
   color: #c82333;
-
   text-decoration: none;
 }
 
@@ -309,26 +216,17 @@ input:focus {
 }
 
 /* ============================= */
-
 /* BUTTONS */
-
 /* ============================= */
 
 button {
   width: 100%;
-
   height: 44px;
-
   border-radius: 10px;
-
   border: none;
-
   font-size: 14px;
-
   font-weight: 500;
-
   cursor: pointer;
-
   transition: 0.25s;
 }
 
@@ -336,9 +234,7 @@ button {
 
 .login-btn {
   background: #d72638;
-
   color: white;
-
   margin-bottom: 12px;
 }
 
@@ -350,9 +246,7 @@ button {
 
 .guest-btn {
   background: #ececec;
-
   color: #333;
-
   margin-bottom: 12px;
 }
 
@@ -364,15 +258,10 @@ button {
 
 .google-center {
   width: 100%;
-
   display: flex;
-
   justify-content: center;
-
   align-items: center;
-
   margin-top: 6px;
-
   margin-bottom: 8px;
 }
 
@@ -392,33 +281,24 @@ button {
 
 .g_id_signin {
   display: flex !important;
-
   justify-content: center;
-
   width: 100%;
 }
 
 /* ============================= */
-
 /* Register */
-
 /* ============================= */
 
 .register {
   text-align: center;
-
   font-size: 13px;
-
   color: #444;
-
   margin-top: 8px;
 }
 
 .register span {
   color: #d72638;
-
   font-weight: 600;
-
   cursor: pointer;
 }
 
@@ -430,23 +310,14 @@ button {
 
 .register-modal {
   width: 100%;
-
   max-width: 400px; /* Smaller, focused width */
-
   padding: 40px;
-
   border-radius: 18px;
-
   background: white;
-
   box-shadow: 0 30px 80px rgba(0, 0, 0, 0.25);
-
   position: relative;
-
   display: flex;
-
   flex-direction: column; /* This keeps everything stacked vertically */
-
   animation: fadeIn 0.3s ease;
 }
 
@@ -454,27 +325,20 @@ button {
 
 .register-header {
   text-align: left;
-
   margin-bottom: 25px;
 }
 
 .register-header h2 {
   text-align: left; /* Overriding the global center align */
-
   margin: 0;
-
   font-size: 26px;
-
   font-weight: 700;
-
   color: #222;
 }
 
 .register-header p {
   margin: 5px 0 0 0;
-
   font-size: 14px;
-
   color: #777;
 }
 
@@ -482,21 +346,15 @@ button {
 
 .form-group {
   width: 100%;
-
   display: flex;
-
   flex-direction: column;
-
   margin-bottom: 15px;
 }
 
 .form-group label {
   font-size: 13px;
-
   font-weight: 600;
-
   margin-bottom: 6px;
-
   color: #444;
 }
 
@@ -510,31 +368,20 @@ button {
 
 .primary-btn {
   width: 100%;
-
   height: 48px;
-
   background: #d62839;
-
   color: white;
-
   border: none;
-
   border-radius: 10px;
-
   font-size: 16px;
-
   font-weight: 600;
-
   cursor: pointer;
-
   margin-top: 10px;
-
   transition: 0.2s;
 }
 
 .primary-btn:hover {
   background: #b91d2d;
-
   box-shadow: 0 5px 15px rgba(214, 40, 57, 0.3);
 }
 
@@ -542,7 +389,6 @@ button {
 
 .register-modal .password-box {
   width: 100%;
-
   position: relative;
 }
 
@@ -550,7 +396,6 @@ button {
 
 .register-modal .password-box input {
   padding-right: 45px;
-
   width: 100%;
 }
 
@@ -558,26 +403,161 @@ button {
 
 .register-modal .toggle-password {
   position: absolute;
-
   right: 14px;
-
   top: 50%;
-
   transform: translateY(-50%);
-
   cursor: pointer;
-
   color: #777;
-
   display: flex;
-
   align-items: center;
-
   z-index: 5;
 }
 
 .register-modal .toggle-password svg {
   width: 20px;
-
   height: 20px;
+}
+
+/* ====================================================== */
+/* NEW HOME PAGE & ADMIN DASHBOARD STYLES (Added Below)   */
+/* ====================================================== */
+
+/* Navigation Bar */
+nav {
+  background: #fff;
+  padding: 15px 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  position: sticky;
+  top: 0;
+  z-index: 900;
+}
+
+.nav-links a {
+  margin-left: 20px;
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.nav-links a:hover {
+  color: #d72638;
+}
+
+/* Admin Panel Link Visibility Control */
+#adminLink {
+  display: none; /* Controlled by JS window.onload */
+}
+
+/* Hero Section */
+.hero {
+  width: 100%;
+  height: 50vh;
+  background: linear-gradient(rgba(255,255,255,0.8), rgba(255,255,255,0.8)), 
+              url('https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=1200&auto=format&fit=crop');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding-left: 8%;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  margin: 0 0 10px 0;
+  font-weight: 800;
+}
+
+.hero p {
+  font-size: 1.1rem;
+  color: #444;
+  margin-bottom: 20px;
+}
+
+/* Admin Modal (The box appearing in the center of your screenshot) */
+.admin-modal {
+  display: none; 
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.6);
+  z-index: 2000;
+  justify-content: center;
+  align-items: center;
+}
+
+.admin-content {
+  background: white;
+  width: 90%;
+  max-width: 800px;
+  max-height: 85vh;
+  padding: 40px;
+  border-radius: 20px;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+}
+
+.admin-content h2 {
+  text-align: left;
+  margin-bottom: 20px;
+  font-weight: 700;
+  font-size: 28px;
+}
+
+/* Admin Stat Card */
+.stat-card {
+  background: #fdf2f3;
+  padding: 25px;
+  border-radius: 12px;
+  border-left: 5px solid #d72638;
+  width: fit-content;
+  margin-bottom: 30px;
+}
+
+.stat-card h3 {
+  margin: 0;
+  font-size: 32px;
+  color: #d72638;
+}
+
+/* Admin Table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+}
+
+th, td {
+  text-align: left;
+  padding: 15px;
+  border-bottom: 1px solid #eee;
+}
+
+th {
+  color: #777;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+/* Products Section */
+.products {
+  padding: 50px 8%;
+}
+
+.products h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 40px;
+}
+
+.logout-btn {
+    color: #d72638 !important;
+    font-weight: 600 !important;
 }
